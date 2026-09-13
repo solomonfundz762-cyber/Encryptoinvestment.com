@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Live Market Rates & Crypto Asset Feeds | Encrypto invest.com</title>
+  <meta name="description" content="Explore real-time cryptocurrency market prices, 24-hour highs, lows, market caps, and instant multi-chain deposit wallet addresses.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Notice Bar -->
+  <aside class="top-notice-bar" aria-label="System status">
+    <div class="flex items-center gap-2">
+      <span class="notice-badge">● LIVE INTERBANK FEEDS</span>
+      <span class="text-secondary" style="font-size: 0.75rem;">Direct WebSocket Feeds from Tier-1 Liquidity Providers</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="admin.html" class="badge badge-indigo" style="font-size: 0.7rem;">Compliance Hub</a>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span>.com</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="market-rates.html" class="nav-link active">Market Rates</a>
+        <a href="investment-plans.html" class="nav-link">Investment Plans</a>
+        <a href="how-to-invest.html" class="nav-link">How to Invest</a>
+        <a href="features.html" class="nav-link">Features & Security</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Client Dashboard →</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open mobile menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span></span>
+      </a>
+      <button class="close-btn" onclick="toggleMobileMenu()">✕</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🏠 Home</a></li>
+      <li><a href="market-rates.html" class="mobile-nav-link active" onclick="toggleMobileMenu()">📊 Live Market Rates</a></li>
+      <li><a href="investment-plans.html" class="mobile-nav-link" onclick="toggleMobileMenu()">💎 Investment Plans</a></li>
+      <li><a href="how-to-invest.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🚀 How to Invest Guide</a></li>
+      <li><a href="features.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🛡️ Platform & Cold Custody</a></li>
+      <li><a href="dashboard.html" class="mobile-nav-link" onclick="toggleMobileMenu()">💼 Client Dashboard</a></li>
+      <li><a href="about.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🏛️ About Company</a></li>
+      <li><a href="contact.html" class="mobile-nav-link" onclick="toggleMobileMenu()">📞 24/7 Global Support</a></li>
+    </ul>
+  </div>
+
+  <main style="padding: 3rem 0 5rem;">
+    <div class="container">
+      <div class="flex items-center justify-between mb-4" style="flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-emerald">REAL-TIME LIQUIDITY & PRICING</span>
+          <h1 style="margin-top: 0.5rem;">Live Cryptocurrency <span class="text-gradient">Market Rates</span></h1>
+          <p class="text-secondary" style="max-width: 600px;">
+            Institutional pricing across 20+ digital assets with zero spread markups, verified high/low ranges, and direct multi-sig wallet deposit addresses.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <input type="text" id="market-search-input" class="form-input" placeholder="Search by coin or network..." style="width: 240px;" oninput="updateMarketTablesDOM()">
+          <button class="btn btn-primary" onclick="openDepositModalForAsset('USDT')">⚡ Deposit Crypto</button>
+        </div>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="tab-nav" id="category-filter-nav">
+        <button class="tab-btn active" onclick="setCategoryFilter('ALL', this)">All Digital Assets (20+)</button>
+        <button class="tab-btn" onclick="setCategoryFilter('Major', this)">Major Market Cap</button>
+        <button class="tab-btn" onclick="setCategoryFilter('Layer 1', this)">Layer 1 Blockchains</button>
+        <button class="tab-btn" onclick="setCategoryFilter('Stablecoin', this)">USD Stablecoins</button>
+      </div>
+
+      <!-- Main Market Rates Table -->
+      <div class="table-responsive">
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>Cryptocurrency & Network</th>
+              <th>Live Price (USD)</th>
+              <th>24h Movement</th>
+              <th>Network / Wallet Protocol</th>
+              <th style="text-align: right;">Instant Action</th>
+            </tr>
+          </thead>
+          <tbody id="market-rates-tbody">
+            <!-- Populated via script.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Market Stats & Summary Bento Grid -->
+      <div class="grid grid-cols-3 mt-6">
+        <div class="card">
+          <div class="badge badge-indigo mb-2">GLOBAL LIQUIDITY</div>
+          <div class="stat-val">$1.94 Trillion</div>
+          <div class="text-secondary" style="font-size: 0.85rem; margin-top: 0.25rem;">Total 24h tracked crypto market capitalization across our liquidity aggregation pools.</div>
+        </div>
+        <div class="card">
+          <div class="badge badge-emerald mb-2">SETTLEMENT SPEED</div>
+          <div class="stat-val text-gradient-emerald">1.8 Seconds</div>
+          <div class="text-secondary" style="font-size: 0.85rem; margin-top: 0.25rem;">Average transaction broadcast confirmation time on high-throughput chains.</div>
+        </div>
+        <div class="card">
+          <div class="badge badge-amber mb-2">SAFU PROTECTION</div>
+          <div class="stat-val text-gradient-amber">$250,000,000</div>
+          <div class="text-secondary" style="font-size: 0.85rem; margin-top: 0.25rem;">Guaranteed institutional custodial insurance held in cold multi-sig reserve funds.</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Encrypto invest.com. All rights reserved.</div>
+        <div class="flex items-center gap-3">
+          <a href="legal.html">Terms</a>
+          <span>•</span>
+          <a href="legal.html">Privacy</a>
+          <span>•</span>
+          <a href="contact.html">Support Desk</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Deposit Modal -->
+  <div class="modal-backdrop" id="deposit-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size: 1.15rem; color: #ffffff;">💳 Cryptocurrency Deposit</h3>
+        <button class="close-btn" onclick="closeModal('deposit-modal')">✕</button>
+      </div>
+      <form onsubmit="handleConfirmDeposit(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="deposit-asset-select">Select Deposit Asset</label>
+            <select id="deposit-asset-select" class="form-select" onchange="handleDepositAssetChange()">
+              <option value="USDT">Tether USD (USDT) - TRC20</option>
+              <option value="BTC">Bitcoin (BTC) - Native</option>
+              <option value="ETH">Ethereum (ETH) - ERC20</option>
+              <option value="SOL">Solana (SOL) - SPL</option>
+              <option value="USDC">USD Coin (USDC)</option>
+            </select>
+          </div>
+          <div style="text-align: center; margin: 1.25rem 0;">
+            <img id="deposit-qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=160x160&data=bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh&bgcolor=111728&color=ffffff" alt="Deposit QR Code" style="width: 160px; height: 160px; margin: 0 auto;">
+            <div class="text-muted mt-2" style="font-size: 0.75rem;" id="deposit-network-label">Tether USD (TRC-20)</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Official Deposit Address</label>
+            <div id="deposit-wallet-address" class="form-input font-mono" style="font-size: 0.8rem; overflow-x: auto;">
+              bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh
+            </div>
+            <button type="button" class="btn btn-sm btn-outline btn-block mt-2" onclick="copyText(document.getElementById('deposit-wallet-address').innerText)">
+              📋 Copy Wallet Address
+            </button>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="deposit-amount-input">Amount (USD Equivalent)</label>
+            <input type="number" id="deposit-amount-input" class="form-input font-mono" placeholder="e.g. 1500" min="50" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('deposit-modal')">Cancel</button>
+          <button type="submit" class="btn btn-success">Confirm Deposit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="script.js"></script>
+</body>
+</html>

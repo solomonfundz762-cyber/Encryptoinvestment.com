@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>High-Yield Institutional Investment Plans | Encrypto invest.com</title>
+  <meta name="description" content="Choose from high-yield automated quantitative cryptocurrency investment plans offering up to 95% ROI with daily accruals, cold vault security, and custom multi-million dollar institutional limits.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Notice Bar -->
+  <aside class="top-notice-bar" aria-label="System status">
+    <div class="flex items-center gap-2">
+      <span class="notice-badge">● DAILY YIELD ACCRUAL ACTIVE</span>
+      <span class="text-secondary" style="font-size: 0.75rem;">Automated Smart-Contract Compounding Executed Every 24 Hours</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="admin.html" class="badge badge-indigo" style="font-size: 0.7rem;">Compliance Hub</a>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span>.com</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="market-rates.html" class="nav-link">Market Rates</a>
+        <a href="investment-plans.html" class="nav-link active">Investment Plans</a>
+        <a href="how-to-invest.html" class="nav-link">How to Invest</a>
+        <a href="features.html" class="nav-link">Features & Security</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Client Dashboard →</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open mobile menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span></span>
+      </a>
+      <button class="close-btn" onclick="toggleMobileMenu()">✕</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🏠 Home</a></li>
+      <li><a href="market-rates.html" class="mobile-nav-link" onclick="toggleMobileMenu()">📊 Live Market Rates</a></li>
+      <li><a href="investment-plans.html" class="mobile-nav-link active" onclick="toggleMobileMenu()">💎 Investment Plans</a></li>
+      <li><a href="how-to-invest.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🚀 How to Invest Guide</a></li>
+      <li><a href="features.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🛡️ Platform & Cold Custody</a></li>
+      <li><a href="dashboard.html" class="mobile-nav-link" onclick="toggleMobileMenu()">💼 Client Dashboard</a></li>
+      <li><a href="about.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🏛️ About Company</a></li>
+      <li><a href="contact.html" class="mobile-nav-link" onclick="toggleMobileMenu()">📞 24/7 Global Support</a></li>
+    </ul>
+  </div>
+
+  <main style="padding: 3.5rem 0 5rem;">
+    <div class="container">
+      <div class="text-center mb-6">
+        <span class="badge badge-indigo">PORTFOLIO YIELD STRATEGIES</span>
+        <h1 style="margin-top: 0.5rem;">Institutional <span class="text-gradient">Investment Plans</span></h1>
+        <p class="text-secondary" style="max-width: 680px; margin: 0.5rem auto 0;">
+          Engineered for consistent capital appreciation through algorithmic arbitrage, cross-chain yield farming, and liquidity provision. Select a plan to start earning daily compounding returns.
+        </p>
+      </div>
+
+      <!-- Plans Grid -->
+      <div class="grid grid-cols-4 mb-6">
+        <!-- Starter Plan -->
+        <div class="plan-card">
+          <div>
+            <div class="badge badge-indigo">Starter Entry</div>
+            <h3 style="margin-top: 0.5rem;">Starter Yield</h3>
+            <div class="plan-roi">8.5% <span style="font-size: 0.9rem; color: var(--text-muted);">ROI</span></div>
+            <div class="text-secondary" style="font-size: 0.85rem;">Lock Duration: <strong>7 Days</strong></div>
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Min Capital: $200 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Max Capital: $1,499 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Daily Interest Accruals</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> 100% Capital Principal Back</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Multi-Sig Cold Vault Custody</li>
+            </ul>
+          </div>
+          <div class="form-group mt-4">
+            <label class="form-label" for="plan-invest-input-starter">Invest Amount ($)</label>
+            <input type="number" id="plan-invest-input-starter" class="form-input font-mono" value="500" min="200" max="1499">
+          </div>
+          <button class="btn btn-block btn-outline" onclick="handleActivatePlan('starter-plan', 200, 8.5, 7)">
+            Activate Starter Plan →
+          </button>
+        </div>
+
+        <!-- Growth Pro Plan -->
+        <div class="plan-card popular">
+          <div class="plan-badge">MOST POPULAR</div>
+          <div>
+            <div class="badge badge-emerald">Growth Tier</div>
+            <h3 style="margin-top: 0.5rem;">Growth Pro</h3>
+            <div class="plan-roi">22.5% <span style="font-size: 0.9rem; color: var(--text-muted);">ROI</span></div>
+            <div class="text-secondary" style="font-size: 0.85rem;">Lock Duration: <strong>14 Days</strong></div>
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Min Capital: $1,500 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Max Capital: $9,999 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Daily Automated Payouts</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Priority Interbank Wires</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Dedicated Account Executive</li>
+            </ul>
+          </div>
+          <div class="form-group mt-4">
+            <label class="form-label" for="plan-invest-input-growth-pro">Invest Amount ($)</label>
+            <input type="number" id="plan-invest-input-growth-pro" class="form-input font-mono" value="2500" min="1500" max="9999">
+          </div>
+          <button class="btn btn-block btn-primary" onclick="handleActivatePlan('growth-pro', 1500, 22.5, 14)">
+            Activate Growth Pro →
+          </button>
+        </div>
+
+        <!-- Enterprise Wealth Plan -->
+        <div class="plan-card">
+          <div>
+            <div class="badge badge-amber">High Yield</div>
+            <h3 style="margin-top: 0.5rem;">Enterprise Wealth</h3>
+            <div class="plan-roi">48.0% <span style="font-size: 0.9rem; color: var(--text-muted);">ROI</span></div>
+            <div class="text-secondary" style="font-size: 0.85rem;">Lock Duration: <strong>30 Days</strong></div>
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Min Capital: $10,000 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Max Capital: $49,999 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> AI Quantitative Algorithms</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Zero Early Penalty Post Maturity</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Direct Telegram & Phone Desk</li>
+            </ul>
+          </div>
+          <div class="form-group mt-4">
+            <label class="form-label" for="plan-invest-input-enterprise">Invest Amount ($)</label>
+            <input type="number" id="plan-invest-input-enterprise" class="form-input font-mono" value="15000" min="10000" max="49999">
+          </div>
+          <button class="btn btn-block btn-outline" onclick="handleActivatePlan('enterprise-wealth', 10000, 48.0, 30)">
+            Activate Enterprise Plan →
+          </button>
+        </div>
+
+        <!-- Institutional VIP Plan (Unlimited) -->
+        <div class="plan-card" style="border-color: #f59e0b;">
+          <div>
+            <div class="badge badge-rose">Apex Tier</div>
+            <h3 style="margin-top: 0.5rem;">Institutional VIP</h3>
+            <div class="plan-roi text-gradient-amber">95.0% <span style="font-size: 0.9rem; color: var(--text-muted);">ROI</span></div>
+            <div class="text-secondary" style="font-size: 0.85rem;">Lock Duration: <strong>60 Days (Custom)</strong></div>
+            <ul class="plan-features">
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Min Capital: $50,000 USD</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Max Capital: <strong>Unlimited ($1B+)</strong></li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Direct OTC Liquidity Execution</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Custom Compounding Schedules</li>
+              <li class="plan-feature-item"><span class="check-icon">✓</span> Senior Partner Officer Support</li>
+            </ul>
+          </div>
+          <div class="form-group mt-4">
+            <label class="form-label" for="plan-invest-input-vip">Invest Amount ($)</label>
+            <input type="number" id="plan-invest-input-vip" class="form-input font-mono" value="50000" min="50000" step="10000">
+          </div>
+          <button class="btn btn-block btn-primary" onclick="handleActivatePlan('institutional-vip', 50000, 95.0, 60)">
+            Deploy VIP Capital →
+          </button>
+        </div>
+      </div>
+
+      <!-- Plan Comparison Matrix -->
+      <div class="card mt-6">
+        <h3 class="mb-4">Plan Comparison & Security Matrix</h3>
+        <div class="table-responsive">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Feature / Guarantee</th>
+                <th>Starter Yield</th>
+                <th>Growth Pro</th>
+                <th>Enterprise Wealth</th>
+                <th>Institutional VIP</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 600;">Minimum Deposit</td>
+                <td class="font-mono">$200 USD</td>
+                <td class="font-mono">$1,500 USD</td>
+                <td class="font-mono">$10,000 USD</td>
+                <td class="font-mono text-gradient-amber" style="font-weight: 700;">$50,000 USD</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Maximum Deposit</td>
+                <td class="font-mono">$1,499 USD</td>
+                <td class="font-mono">$9,999 USD</td>
+                <td class="font-mono">$49,999 USD</td>
+                <td class="font-mono text-success" style="font-weight: 700;">Unlimited ($1,000,000,000)</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Total Fixed Return</td>
+                <td class="text-success font-mono">8.5% Net</td>
+                <td class="text-success font-mono">22.5% Net</td>
+                <td class="text-success font-mono">48.0% Net</td>
+                <td class="text-success font-mono" style="font-weight: 700;">95.0% Net</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Custodial Insurance</td>
+                <td>$250M SAFU Pool</td>
+                <td>$250M SAFU Pool</td>
+                <td>$250M SAFU Pool</td>
+                <td>100% Bespoke Underwriting</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">Payout Frequency</td>
+                <td>Daily Compounding</td>
+                <td>Daily Compounding</td>
+                <td>Daily Compounding</td>
+                <td>Flexible Daily / Weekly / Maturity</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Encrypto invest.com. All rights reserved.</div>
+        <div class="flex items-center gap-3">
+          <a href="legal.html">Terms</a>
+          <span>•</span>
+          <a href="legal.html">Privacy</a>
+          <span>•</span>
+          <a href="contact.html">Support Desk</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="script.js"></script>
+</body>
+</html>

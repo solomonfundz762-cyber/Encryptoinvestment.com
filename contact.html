@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>24/7 Institutional Support & Concierge Desk | Encrypto invest.com</title>
+  <meta name="description" content="Reach our 24/7 dedicated institutional support desks in London, Zurich, and Singapore via live chat, secure email, or VIP phone concierge.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <aside class="top-notice-bar" aria-label="System status">
+    <div class="flex items-center gap-2">
+      <span class="notice-badge">● LIVE SUPPORT DESK (AVERAGE RESPONSE: 2 MINS)</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="admin.html" class="badge badge-indigo" style="font-size: 0.7rem;">Compliance Hub</a>
+    </div>
+  </aside>
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span>.com</span>
+      </a>
+      <nav class="nav-links" aria-label="Main Navigation">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="market-rates.html" class="nav-link">Market Rates</a>
+        <a href="investment-plans.html" class="nav-link">Investment Plans</a>
+        <a href="how-to-invest.html" class="nav-link">How to Invest</a>
+        <a href="features.html" class="nav-link">Features & Security</a>
+        <a href="about.html" class="nav-link">About Us</a>
+        <a href="contact.html" class="nav-link active">Contact</a>
+      </nav>
+      <div class="nav-actions">
+        <a href="login.html" class="btn btn-ghost">Sign In</a>
+        <a href="dashboard.html" class="btn btn-primary">Client Dashboard →</a>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Open mobile menu">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-drawer" id="mobile-drawer">
+    <div class="mobile-drawer-header">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span></span>
+      </a>
+      <button class="close-btn" onclick="toggleMobileMenu()">✕</button>
+    </div>
+    <ul class="mobile-nav-list">
+      <li><a href="index.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🏠 Home</a></li>
+      <li><a href="market-rates.html" class="mobile-nav-link" onclick="toggleMobileMenu()">📊 Live Market Rates</a></li>
+      <li><a href="investment-plans.html" class="mobile-nav-link" onclick="toggleMobileMenu()">💎 Investment Plans</a></li>
+      <li><a href="how-to-invest.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🚀 How to Invest Guide</a></li>
+      <li><a href="features.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🛡️ Platform & Cold Custody</a></li>
+      <li><a href="dashboard.html" class="mobile-nav-link" onclick="toggleMobileMenu()">💼 Client Dashboard</a></li>
+      <li><a href="about.html" class="mobile-nav-link" onclick="toggleMobileMenu()">🏛️ About Company</a></li>
+      <li><a href="contact.html" class="mobile-nav-link active" onclick="toggleMobileMenu()">📞 24/7 Global Support</a></li>
+    </ul>
+  </div>
+
+  <main style="padding: 3.5rem 0 5rem;">
+    <div class="container">
+      <div class="text-center mb-6">
+        <span class="badge badge-emerald">24/7 CONCIERGE & SUPPORT</span>
+        <h1 style="margin-top: 0.5rem;">Get in Touch with <span class="text-gradient">Our Wealth Advisors</span></h1>
+        <p class="text-secondary" style="max-width: 650px; margin: 0.5rem auto 0;">
+          Our dedicated account specialists are available around the clock to assist with deposit clearing, institutional OTC transactions, and technical inquiries.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6">
+        <!-- Contact Form -->
+        <div class="card">
+          <h3 class="mb-4">Submit an Inquiry Ticket</h3>
+          <form id="contact-ticket-form" onsubmit="event.preventDefault(); showToast('Support ticket dispatched successfully. An advisor will reach you shortly.', 'success'); this.reset();">
+            <div class="form-group">
+              <label class="form-label" for="contact-name">Full Name</label>
+              <input type="text" id="contact-name" class="form-input" placeholder="e.g. Alexander Vance" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-email">Corporate / Private Email Address</label>
+              <input type="email" id="contact-email" class="form-input" placeholder="e.g. alexander@fund.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-topic">Inquiry Category</label>
+              <select id="contact-topic" class="form-select">
+                <option value="deposit">Deposit & Blockchain Clearing</option>
+                <option value="institutional">Institutional OTC / VIP Allocation ($50k+)</option>
+                <option value="kyc">KYC & Account Verification</option>
+                <option value="withdrawal">Withdrawal & Wire Settlement</option>
+                <option value="partnership">Corporate Partnership</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="contact-message">Message Details</label>
+              <textarea id="contact-message" class="form-input" rows="4" placeholder="Describe your inquiry in detail..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-block btn-primary">
+              Transmit Ticket to Desk →
+            </button>
+          </form>
+        </div>
+
+        <!-- Contact Channels & Info -->
+        <div class="flex flex-col gap-4">
+          <div class="card">
+            <div class="badge badge-indigo mb-2">OFFICIAL CHANNELS</div>
+            <h4>Direct Institutional Contacts</h4>
+            <div class="mt-3" style="font-size: 0.9rem; line-height: 1.8;">
+              <div>📧 <strong>Official Email:</strong> <a href="mailto:support@encryptoinvest.com" class="text-primary">support@encryptoinvest.com</a></div>
+              <div>⚡ <strong>Telegram VIP Desk:</strong> <span class="font-mono text-secondary">@EncryptoInvestVIP</span></div>
+              <div>🛡️ <strong>Compliance Office:</strong> <span class="font-mono text-secondary">compliance@encryptoinvest.com</span></div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="badge badge-emerald mb-2">OPERATING HUBS</div>
+            <h4>Global Physical Desks</h4>
+            <div class="mt-2 text-secondary" style="font-size: 0.85rem; line-height: 1.6;">
+              <p><strong>London OTC Desk:</strong> +44 (20) 7946 0912</p>
+              <p><strong>Zurich Custody:</strong> +41 22 518 89 00</p>
+              <p><strong>Singapore Desk:</strong> +65 6712 8890</p>
+            </div>
+          </div>
+
+          <div class="card" style="background: rgba(16, 185, 129, 0.05); border-color: rgba(16, 185, 129, 0.2);">
+            <div class="badge badge-emerald mb-2">SLA ASSURANCE</div>
+            <h4 style="color: #34d399;">2-Minute Average Response</h4>
+            <p class="text-secondary" style="font-size: 0.85rem; margin-top: 0.25rem;">
+              All registered investors receive dedicated priority routing. Account executives are available 24 hours a day, 365 days a year.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <div>© 2026 Encrypto invest.com. All rights reserved.</div>
+        <div class="flex items-center gap-3">
+          <a href="legal.html">Terms</a>
+          <span>•</span>
+          <a href="legal.html">Privacy</a>
+          <span>•</span>
+          <a href="contact.html">Support Desk</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="script.js"></script>
+</body>
+</html>

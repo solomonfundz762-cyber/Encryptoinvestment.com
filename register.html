@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Register Portfolio Account | Encrypto invest.com</title>
+  <meta name="description" content="Open an institutional or private cryptocurrency yield account with Encrypto invest.com.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span>.com</span>
+      </a>
+      <a href="login.html" class="btn btn-sm btn-ghost">Already have an account? Sign In</a>
+    </div>
+  </header>
+
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem;">
+    <div class="card" style="width: 100%; max-width: 480px; border-color: rgba(99, 102, 241, 0.3);">
+      <div class="text-center mb-4">
+        <span class="badge badge-emerald">INSTANT ONBOARDING</span>
+        <h2 style="margin-top: 0.5rem; font-size: 1.5rem;">Create Client Portfolio</h2>
+        <p class="text-secondary" style="font-size: 0.85rem;">Access high-yield strategies and cold vault custody.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); const email = document.getElementById('reg-email').value; EncryptoState.user.email = email; EncryptoState.user.isLoggedIn = true; saveState(); showToast('Account created successfully! Redirecting...', 'success'); setTimeout(() => window.location.href = 'dashboard.html', 800);">
+        <div class="form-group">
+          <label class="form-label" for="reg-name">Full Name / Entity Name</label>
+          <input type="text" id="reg-name" class="form-input" placeholder="e.g. Satoshi Nakamoto" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-email">Email Address</label>
+          <input type="email" id="reg-email" class="form-input" placeholder="name@domain.com" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-password">Create Master Password</label>
+          <input type="password" id="reg-password" class="form-input" placeholder="Minimum 8 characters" minlength="8" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="reg-account-type">Portfolio Account Type</label>
+          <select id="reg-account-type" class="form-select">
+            <option value="individual">Individual Private Investor</option>
+            <option value="corporate">Corporate / Institutional Treasury</option>
+            <option value="family_office">Family Office / Wealth Management</option>
+          </select>
+        </div>
+
+        <div style="font-size: 0.75rem; color: var(--text-muted); margin-bottom: 1rem;">
+          By registering, you agree to the <a href="legal.html#terms" class="text-primary">Terms of Service</a>, <a href="legal.html#privacy" class="text-primary">Privacy Policy</a>, and $250M SAFU Insurance Guidelines.
+        </div>
+
+        <button type="submit" class="btn btn-block btn-primary">
+          Create Portfolio & Start Earning →
+        </button>
+      </form>
+
+      <div class="mt-4 text-center" style="font-size: 0.85rem;">
+        <span class="text-secondary">Already registered?</span>
+        <a href="login.html" class="text-primary" style="font-weight: 600; margin-left: 0.25rem;">Sign In Here</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 1.5rem 0;">
+    <div class="container text-center text-muted" style="font-size: 0.75rem;">
+      © 2026 Encrypto invest.com • Protected by $250M SAFU Custody Pool
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="script.js"></script>
+</body>
+</html>

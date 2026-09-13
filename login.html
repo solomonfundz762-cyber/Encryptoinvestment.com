@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Client Sign In | Encrypto invest.com</title>
+  <meta name="description" content="Securely sign in to your Encrypto invest.com portfolio dashboard.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body style="min-height: 100vh; display: flex; flex-direction: column;">
+
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon">E</div>
+        <span>Encrypto<span style="color: var(--primary-light);">invest</span>.com</span>
+      </a>
+      <a href="register.html" class="btn btn-sm btn-outline">Create Account</a>
+    </div>
+  </header>
+
+  <main style="flex: 1; display: flex; align-items: center; justify-content: center; padding: 2rem 1rem;">
+    <div class="card" style="width: 100%; max-width: 440px; border-color: rgba(99, 102, 241, 0.3);">
+      <div class="text-center mb-4">
+        <span class="badge badge-indigo">PORTFOLIO PORTAL</span>
+        <h2 style="margin-top: 0.5rem; font-size: 1.5rem;">Investor Sign In</h2>
+        <p class="text-secondary" style="font-size: 0.85rem;">Access your encrypted balances and daily yields.</p>
+      </div>
+
+      <form onsubmit="event.preventDefault(); showToast('Authentication successful! Loading dashboard...', 'success'); setTimeout(() => window.location.href = 'dashboard.html', 800);">
+        <div class="form-group">
+          <label class="form-label" for="login-email">Registered Email</label>
+          <input type="email" id="login-email" class="form-input" value="wizzysoney7@gmail.com" required>
+        </div>
+
+        <div class="form-group">
+          <div class="flex items-center justify-between">
+            <label class="form-label" for="login-password">Account Password</label>
+            <a href="contact.html" class="text-primary" style="font-size: 0.75rem;">Forgot?</a>
+          </div>
+          <input type="password" id="login-password" class="form-input" value="••••••••••••" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="login-2fa">2FA Authenticator Code (Optional)</label>
+          <input type="text" id="login-2fa" class="form-input font-mono" placeholder="6-digit code e.g. 482910">
+        </div>
+
+        <button type="submit" class="btn btn-block btn-primary mt-4">
+          Authenticate & Open Dashboard →
+        </button>
+      </form>
+
+      <div class="mt-4 text-center" style="font-size: 0.85rem;">
+        <span class="text-secondary">Don't have an account yet?</span>
+        <a href="register.html" class="text-primary" style="font-weight: 600; margin-left: 0.25rem;">Register Free</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer" style="padding: 1.5rem 0;">
+    <div class="container text-center text-muted" style="font-size: 0.75rem;">
+      © 2026 Encrypto invest.com • 256-Bit SSL Encrypted Session
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="script.js"></script>
+</body>
+</html>

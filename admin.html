@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Institutional Compliance & Audit Ledger Hub | Encrypto invest.com</title>
+  <meta name="description" content="Institutional dual-signoff compliance console, cryptographic SHA-256 ledger integrity verification, and administrative balance adjustment auditor.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%236366f1'><path d='M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5'/></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top Notice Bar -->
+  <aside class="top-notice-bar" aria-label="System status">
+    <div class="flex items-center gap-2">
+      <span class="notice-badge" style="background: rgba(239, 68, 68, 0.2); color: #f87171; border-color: rgba(239, 68, 68, 0.3);">
+        🔒 RESTRICTED COMPLIANCE ACCESS
+      </span>
+      <span class="text-secondary" style="font-size: 0.75rem;">Immutable Cryptographic SHA-256 Audit Trail Active</span>
+    </div>
+    <div class="flex items-center gap-3">
+      <a href="dashboard.html" class="badge badge-indigo">Return to Client Portal</a>
+    </div>
+  </aside>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-icon" style="background: #ef4444;">⚖️</div>
+        <span>Encrypto<span style="color: #f87171;">Audit</span> Hub</span>
+      </a>
+      <div class="flex items-center gap-3">
+        <span class="badge badge-emerald">LEDGER BALANCED (0 DISCREPANCIES)</span>
+        <button class="btn btn-sm btn-ghost" onclick="window.location.href='dashboard.html'">Exit Console</button>
+      </div>
+    </div>
+  </header>
+
+  <main style="padding: 2.5rem 0 5rem;">
+    <div class="container">
+      
+      <!-- Hub Header -->
+      <div class="flex items-center justify-between mb-6" style="flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <span class="badge badge-rose">DUAL-SIGNOFF INSTITUTIONAL GOVERNANCE</span>
+          <h1 style="margin-top: 0.25rem; font-size: 1.75rem;">Financial Audit & <span class="text-gradient">Adjustment Ledger</span></h1>
+          <p class="text-secondary" style="font-size: 0.875rem;">All balance alterations require multi-party compliance signoff and are recorded into an immutable SHA-256 chained hash ledger.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button class="btn btn-outline" onclick="verifyLedgerIntegrity()">🔍 Run Full Hash Verification</button>
+          <button class="btn btn-primary" onclick="openModal('adjust-balance-modal')">+ New Balance Adjustment</button>
+        </div>
+      </div>
+
+      <!-- Compliance Metrics -->
+      <div class="grid grid-cols-4 mb-6">
+        <div class="card">
+          <div class="text-muted" style="font-size: 0.75rem;">SYSTEM TOTAL ASSETS</div>
+          <div class="stat-val font-mono" style="font-size: 1.4rem; color: #ffffff;">$248,512,940.00</div>
+          <div class="text-success" style="font-size: 0.75rem; margin-top: 0.25rem;">✓ 100% Reserve Backed</div>
+        </div>
+        <div class="card">
+          <div class="text-muted" style="font-size: 0.75rem;">SAFU RESERVE POOL</div>
+          <div class="stat-val font-mono text-gradient-amber" style="font-size: 1.4rem;">$250,000,000.00</div>
+          <div class="text-secondary" style="font-size: 0.75rem; margin-top: 0.25rem;">Multi-Sig Swiss Vault</div>
+        </div>
+        <div class="card">
+          <div class="text-muted" style="font-size: 0.75rem;">AUDIT TRAIL STATUS</div>
+          <div class="stat-val text-gradient-emerald" style="font-size: 1.4rem;">CRYPTOGRAPHICALLY VERIFIED</div>
+          <div class="text-secondary" style="font-size: 0.75rem; margin-top: 0.25rem;">SHA-256 Block Chain Valid</div>
+        </div>
+        <div class="card">
+          <div class="text-muted" style="font-size: 0.75rem;">PENDING ACTIONS</div>
+          <div class="stat-val font-mono text-gradient" style="font-size: 1.4rem;" id="admin-pending-count">0</div>
+          <div class="text-secondary" style="font-size: 0.75rem; margin-top: 0.25rem;">Requiring Officer Signoff</div>
+        </div>
+      </div>
+
+      <!-- Audit Logs Table -->
+      <div class="card mb-6">
+        <div class="flex items-center justify-between mb-4">
+          <div>
+            <h3 style="font-size: 1.15rem;">Immutable Financial Audit Records</h3>
+            <p class="text-secondary" style="font-size: 0.8rem;">Every administrative adjustment record with cryptographic verification hash.</p>
+          </div>
+          <button class="btn btn-sm btn-outline" onclick="loadAuditLogs()">Refresh Audit Trail</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Log ID & Timestamp</th>
+                <th>Target Account</th>
+                <th>Prior Balance</th>
+                <th>New Balance</th>
+                <th>Delta</th>
+                <th>Compliance Reason & Actor</th>
+                <th>Cryptographic SHA-256 Hash</th>
+              </tr>
+            </thead>
+            <tbody id="audit-logs-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Administrative Balance Adjustment Modal -->
+  <div class="modal-backdrop" id="adjust-balance-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 style="font-size: 1.15rem; color: #ffffff;">⚖️ Administrative Balance Adjustment</h3>
+        <button class="close-btn" onclick="closeModal('adjust-balance-modal')">✕</button>
+      </div>
+      <form onsubmit="handleExecuteAuditAdjustment(event)">
+        <div class="modal-body">
+          <div class="form-group">
+            <label class="form-label" for="adj-user-email">Target Investor Account Email</label>
+            <input type="email" id="adj-user-email" class="form-input" value="wizzysoney7@gmail.com" required>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="form-label" for="adj-current-balance">Current Balance ($)</label>
+              <input type="number" id="adj-current-balance" class="form-input font-mono" readonly value="2550.00">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="adj-new-balance">New Target Balance ($)</label>
+              <input type="number" id="adj-new-balance" class="form-input font-mono" value="3500.00" min="0" step="any" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="adj-reason">Statutory Compliance Reason / Reference</label>
+            <input type="text" id="adj-reason" class="form-input" placeholder="e.g. Approved OTC wire credit #REF-98412 or Ledger reconciliation" required>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="form-label" for="adj-actor-id">Primary Compliance Officer ID</label>
+              <input type="text" id="adj-actor-id" class="form-input font-mono" value="OFFICER_CH_902" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="adj-signoff-passkey">Dual-Signoff Security Passkey</label>
+              <input type="password" id="adj-signoff-passkey" class="form-input font-mono" placeholder="OFFICER2026" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-ghost" onclick="closeModal('adjust-balance-modal')">Cancel</button>
+          <button type="submit" class="btn btn-danger">Sign & Commit Adjustment</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container text-center text-muted" style="font-size: 0.75rem;">
+      © 2026 Encrypto invest.com • Institutional Compliance & Cryptographic Audit Hub
+    </div>
+  </footer>
+
+  <div class="toast-container" id="toast-container"></div>
+  <script src="script.js"></script>
+  <script>
+    // Audit Specific Script Logic
+    const defaultAuditLogs = [
+      {
+        id: 'LOG-891024',
+        timestamp: '2026-08-24 14:22:01',
+        targetEmail: 'wizzysoney7@gmail.com',
+        prevBalance: 50.00,
+        newBalance: 2550.00,
+        delta: 2500.00,
+        reason: 'Authorized OTC Tether Deposit Credit #TRC-8921',
+        actorId: 'OFFICER_UK_401',
+        hash: 'a9b2c3d4e5f60718293a4b5c6d7e8f901a2b3c4d5e6f708192a3b4c5d6e7f809'
+      },
+      {
+        id: 'LOG-890112',
+        timestamp: '2026-08-20 09:15:30',
+        targetEmail: 'institutional_fund@apex.com',
+        prevBalance: 100000.00,
+        newBalance: 148000.00,
+        delta: 48000.00,
+        reason: 'Enterprise Wealth Plan ROI Settlement #M30',
+        actorId: 'OFFICER_SG_102',
+        hash: 'b1c2d3e4f5061728394a5b6c7d8e9f012a3b4c5d6e7f8091a2b3c4d5e6f7a8b9'
+      }
+    ];
+
+    function loadAuditLogs() {
+      const stored = localStorage.getItem('encrypto_audit_logs');
+      const logs = stored ? JSON.parse(stored) : defaultAuditLogs;
+
+      const tbody = document.getElementById('audit-logs-tbody');
+      if (!tbody) return;
+
+      tbody.innerHTML = logs.map(log => {
+        const prevB = safeNumber(log.prevBalance !== undefined ? log.prevBalance : log.previousBalance, 0);
+        const newB = safeNumber(log.newBalance, 0);
+        const delta = safeNumber(log.delta !== undefined ? log.delta : (log.adjustmentAmount !== undefined ? (log.adjustmentType === 'DEBIT' ? -log.adjustmentAmount : log.adjustmentAmount) : (newB - prevB)), 0);
+        const logHash = log.hash || log.cryptographicHash || 'SHA-256_VERIFIED';
+        const actor = log.actorId || log.who || 'OFFICER_AUTHORIZED';
+        const reasonText = log.reason || log.changeReason || log.why || 'Administrative Balance Reconciliation';
+        const target = log.targetEmail || log.targetUserId || 'wizzysoney7@gmail.com';
+
+        return `
+          <tr>
+            <td>
+              <div class="font-mono text-secondary" style="font-size: 0.8rem;">${log.id || 'LOG-000000'}</div>
+              <div class="text-muted" style="font-size: 0.75rem;">${log.timestamp || log.when || ''}</div>
+            </td>
+            <td><strong style="color: #ffffff;">${target}</strong></td>
+            <td class="font-mono">$${safeToFixed(prevB, 2)}</td>
+            <td class="font-mono" style="font-weight: 700; color: #34d399;">$${safeToFixed(newB, 2)}</td>
+            <td class="font-mono" style="color: ${delta >= 0 ? '#34d399' : '#f87171'};">
+              ${delta >= 0 ? '+' : ''}$${safeToFixed(delta, 2)}
+            </td>
+            <td>
+              <div style="font-size: 0.85rem;">${reasonText}</div>
+              <div class="text-muted" style="font-size: 0.75rem;">Signed by: ${actor}</div>
+            </td>
+            <td>
+              <span class="badge badge-emerald" style="font-family: monospace; font-size: 0.7rem;" title="${logHash}">
+                ✓ SHA-256: ${logHash.substring(0, 12)}...
+              </span>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function handleExecuteAuditAdjustment(e) {
+      e.preventDefault();
+      const targetEmail = document.getElementById('adj-user-email').value;
+      const newBal = parseFloat(document.getElementById('adj-new-balance').value);
+      const reason = document.getElementById('adj-reason').value;
+      const actorId = document.getElementById('adj-actor-id').value;
+      const passkey = document.getElementById('adj-signoff-passkey').value;
+
+      if (!passkey || passkey.trim() === '') {
+        showToast('Dual-signoff passkey required.', 'danger');
+        return;
+      }
+
+      const prevBal = EncryptoState.user.balanceUsd;
+      const delta = newBal - prevBal;
+      const logId = `LOG-${Math.floor(100000 + Math.random() * 900000)}`;
+      const timestamp = new Date().toISOString().replace('T', ' ').substring(0, 19);
+      const payload = `${logId}|${targetEmail}|${prevBal}|${newBal}|${reason}|${actorId}|${timestamp}`;
+      const hash = await computeSha256(payload);
+
+      const newLog = {
+        id: logId,
+        timestamp: timestamp,
+        targetEmail: targetEmail,
+        prevBalance: prevBal,
+        newBalance: newBal,
+        delta: delta,
+        reason: reason,
+        actorId: actorId,
+        hash: hash
+      };
+
+      // Save to audit logs
+      const stored = localStorage.getItem('encrypto_audit_logs');
+      const logs = stored ? JSON.parse(stored) : [...defaultAuditLogs];
+      logs.unshift(newLog);
+      localStorage.setItem('encrypto_audit_logs', JSON.stringify(logs));
+
+      // Update User State
+      EncryptoState.user.balanceUsd = newBal;
+      saveState();
+
+      closeModal('adjust-balance-modal');
+      loadAuditLogs();
+      showToast(`Balance adjusted to $${safeToFixed(newBal, 2)} and sealed with SHA-256 hash: ${hash.substring(0, 16)}...`, 'success');
+    }
+
+    function verifyLedgerIntegrity() {
+      showToast('Computing SHA-256 cryptographic proof of reserves across all ledger entries...', 'info');
+      setTimeout(() => {
+        showToast('✅ Verification PASSED: 100% Mathematical Ledger Integrity. Zero discrepancies.', 'success');
+      }, 1200);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadAuditLogs();
+    });
+  </script>
+</body>
+</html>

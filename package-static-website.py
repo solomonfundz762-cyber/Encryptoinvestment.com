@@ -1,4 +1,67 @@
-# Encrypto Investment - Production Static Website Package
+import os
+import shutil
+import zipfile
+
+def package_static_website():
+    workspace_root = os.path.abspath(os.getcwd())
+    dist_dir = os.path.join(workspace_root, 'dist')
+    dist_assets = os.path.join(dist_dir, 'assets')
+    dist_index = os.path.join(dist_dir, 'index.html')
+
+    if not os.path.exists(dist_index):
+        print("dist/index.html not found! Please build the project first.")
+        return
+
+    output_dir = os.path.join(workspace_root, 'static-website')
+    if os.path.exists(output_dir):
+        shutil.rmtree(output_dir)
+    os.makedirs(output_dir, exist_ok=True)
+
+    # 1. Copy the main production homepage (index.html)
+    shutil.copy2(dist_index, os.path.join(output_dir, 'index.html'))
+
+    # 2. Copy the production assets directory
+    target_assets_dir = os.path.join(output_dir, 'assets')
+    if os.path.exists(dist_assets):
+        shutil.copytree(dist_assets, target_assets_dir)
+
+    # 3. Create 404.html (GitHub Pages SPA fallback so deep links and refreshing work)
+    shutil.copy2(dist_index, os.path.join(output_dir, '404.html'))
+
+    # 4. Create .nojekyll (tells GitHub Pages to disable Jekyll processing)
+    nojekyll_path = os.path.join(output_dir, '.nojekyll')
+    with open(nojekyll_path, 'w') as f:
+        f.write('# Disable Jekyll on GitHub Pages\n')
+
+    # 5. Copy companion multi-page static HTML files, style.css, script.js
+    companion_files = [
+        'about.html',
+        'admin.html',
+        'contact.html',
+        'dashboard.html',
+        'features.html',
+        'how-to-invest.html',
+        'investment-plans.html',
+        'legal.html',
+        'login.html',
+        'market-rates.html',
+        'register.html',
+        'style.css',
+        'script.js'
+    ]
+
+    for fname in companion_files:
+        src_path = os.path.join(workspace_root, fname)
+        if os.path.exists(src_path):
+            shutil.copy2(src_path, os.path.join(output_dir, fname))
+
+    # Also copy manifest.json from public if present
+    public_manifest = os.path.join(workspace_root, 'public', 'manifest.json')
+    if os.path.exists(public_manifest):
+        shutil.copy2(public_manifest, os.path.join(output_dir, 'manifest.json'))
+
+    # 6. Create README.md inside static-website with clear GitHub Pages deployment instructions
+    readme_content = """# Encrypto Investment - Production Static Website Package
 
 This folder contains the complete, production-ready static website package, configured with **relative asset paths** (`./assets/...`) for seamless hosting on **GitHub Pages**, **Netlify**, **Vercel**, **Cloudflare Pages**, or any static web hosting provider.
 
@@ -89,3 +152,31 @@ All asset references in `index.html` and companion pages are strictly relative (
 - A GitHub Pages root domain (`https://<username>.github.io/`)
 - A GitHub Pages repository subpath (`https://<username>.github.io/<repo-name>/`)
 - An offline local folder (`file:///...`)
+"""
+    with open(os.path.join(output_dir, 'README.md'), 'w') as f:
+        f.write(readme_content)
+
+    # 7. Create static-website.zip archive
+    zip_filename = "static-website.zip"
+    public_zip = os.path.join(workspace_root, "public", zip_filename)
+    root_zip = os.path.join(workspace_root, zip_filename)
+    dist_zip = os.path.join(dist_dir, zip_filename)
+
+    with zipfile.ZipFile(public_zip, 'w', compression=zipfile.ZIP_DEFLATED, compresslevel=9) as zipf:
+        for root, dirs, files in os.walk(output_dir):
+            for file in sorted(files):
+                full_path = os.path.join(root, file)
+                rel_path = os.path.relpath(full_path, output_dir)
+                zipf.write(full_path, rel_path)
+
+    # Copy to root and dist
+    shutil.copy2(public_zip, root_zip)
+    shutil.copy2(public_zip, dist_zip)
+
+    size_mb = os.path.getsize(public_zip) / (1024 * 1024)
+    print(f"Successfully packaged static website into '{zip_filename}' ({size_mb:.2f} MB)")
+    print(f"Directory: {output_dir}")
+    print(f"Archives saved at:\n - {public_zip}\n - {root_zip}\n - {dist_zip}")
+
+if __name__ == '__main__':
+    package_static_website()
